@@ -1,8 +1,9 @@
+// server.js (CommonJS)
 const express = require("express");
 const cors = require("cors");
 
 const app = express();
-app.use(cors());
+app.use(cors()); // allow browser to call this server
 
 app.get("/reddit", async (req, res) => {
   try {
@@ -17,6 +18,8 @@ app.get("/reddit", async (req, res) => {
     }
 
     const json = await response.json();
+
+    // Send only the children array (each item has `data` with title, selftext_html, url, score)
     res.json(json.data.children);
   } catch (err) {
     console.error("Server fetch error:", err);
@@ -24,5 +27,7 @@ app.get("/reddit", async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+const PORT = 5000;
+app.listen(PORT, () =>
+  console.log(`✅ Server running at http://localhost:${PORT}`)
+);
