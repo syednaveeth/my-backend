@@ -10,7 +10,7 @@
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "firebase": "^12.3.0",
-    "node-fetch": "^3.3.2",
+    "node-fetch": "^2.7.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-scripts": "5.0.1",
@@ -20,7 +20,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start-backend": "node taskapp-backend/server.js"
   },
   "eslintConfig": {
     "extends": [
@@ -44,5 +45,6 @@
   "main": "index.js",
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {}
 }
