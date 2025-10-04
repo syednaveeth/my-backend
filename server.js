@@ -1,9 +1,17 @@
-// server.js (CommonJS)
 const express = require("express");
 const cors = require("cors");
 
 const app = express();
 app.use(cors()); // allow browser to call this server
+
+// Add a root route
+app.get("/", (req, res) => {
+  res.json({
+    message: "Reddit API Proxy Server",
+    usage: "Use /reddit endpoint to fetch ReactJS posts",
+    example: "GET https://my-backend-api-lwf7.onrender.com/reddit",
+  });
+});
 
 app.get("/reddit", async (req, res) => {
   try {
@@ -27,7 +35,6 @@ app.get("/reddit", async (req, res) => {
   }
 });
 
-const PORT = 5000;
-app.listen(PORT, () =>
-  console.log(`✅ Server running at http://localhost:${PORT}`)
-);
+// Use environment port for Render, fallback to 5000 for local development
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
