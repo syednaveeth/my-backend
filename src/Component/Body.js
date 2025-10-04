@@ -13,7 +13,9 @@ const Body = () => {
 
   const getRedditPosts = async () => {
     try {
-      const res = await fetch("http://localhost:5000/reddit"); // backend proxy
+      const res = await fetch(
+        "https://my-backend-api-lwf7.onrender.com/reddit"
+      ); // ✅ Changed to deployed URL
       if (!res.ok) throw new Error(`Server error ${res.status}`);
       const data = await res.json();
       console.log("Fetched posts:", data);
